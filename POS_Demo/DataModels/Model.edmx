@@ -1,0 +1,822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="POSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comment_Types">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FK_Comment_TypeId" Type="int" Nullable="false" />
+          <Property Name="Comment_For_Id" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deal_Source">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deal_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales_Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales_Person_Slab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Sales_PersonId" Type="int" Nullable="false" />
+          <Property Name="FK_Units_DetailsId" Type="int" Nullable="false" />
+          <Property Name="Sales_Person_Slab" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total_Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Units_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleDate" Type="datetime" Nullable="false" />
+          <Property Name="FK_DeveloperId" Type="int" />
+          <Property Name="Unit_NO" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Unit_Volume" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FK_Sales_PersonId" Type="int" Nullable="false" />
+          <Property Name="Deal_Slab" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Commission_Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Commission_Deduction" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Total_Commission" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Units_Payments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FK_Units_DetailsId" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaymentAmountPercentage" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CommissionDeduction" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalesPersonCommision" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetAmountDue" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UncollectedPercentage" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Units_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Units_DetailsId" Type="int" Nullable="false" />
+          <Property Name="FK_Deal_StatusId" Type="int" Nullable="false" />
+          <Property Name="FK_Deal_SourceId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Comments_Comment_Types">
+          <End Role="Comment_Types" Type="Self.Comment_Types" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment_Types">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="FK_Comment_TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Person_Slab_Sales_Person">
+          <End Role="Sales_Person" Type="Self.Sales_Person" Multiplicity="1" />
+          <End Role="Sales_Person_Slab" Type="Self.Sales_Person_Slab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales_Person_Slab">
+              <PropertyRef Name="FK_Sales_PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Person_Slab_Units_Details">
+          <End Role="Units_Details" Type="Self.Units_Details" Multiplicity="1" />
+          <End Role="Sales_Person_Slab" Type="Self.Sales_Person_Slab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales_Person_Slab">
+              <PropertyRef Name="FK_Units_DetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Details_Developers">
+          <End Role="Developers" Type="Self.Developers" Multiplicity="0..1" />
+          <End Role="Units_Details" Type="Self.Units_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Details">
+              <PropertyRef Name="FK_DeveloperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Details_Sales_Person">
+          <End Role="Sales_Person" Type="Self.Sales_Person" Multiplicity="1" />
+          <End Role="Units_Details" Type="Self.Units_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Details">
+              <PropertyRef Name="FK_Sales_PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Payments_Units_Details">
+          <End Role="Units_Details" Type="Self.Units_Details" Multiplicity="1" />
+          <End Role="Units_Payments" Type="Self.Units_Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Payments">
+              <PropertyRef Name="FK_Units_DetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Status_Deal_Source">
+          <End Role="Deal_Source" Type="Self.Deal_Source" Multiplicity="1" />
+          <End Role="Units_Status" Type="Self.Units_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deal_Source">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Status">
+              <PropertyRef Name="FK_Deal_SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Status_Deal_Status">
+          <End Role="Deal_Status" Type="Self.Deal_Status" Multiplicity="1" />
+          <End Role="Units_Status" Type="Self.Units_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deal_Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Status">
+              <PropertyRef Name="FK_Deal_StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Status_Units_Details">
+          <End Role="Units_Details" Type="Self.Units_Details" Multiplicity="1" />
+          <End Role="Units_Status" Type="Self.Units_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Status">
+              <PropertyRef Name="FK_Units_DetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POSModelStoreContainer">
+          <EntitySet Name="Comment_Types" EntityType="Self.Comment_Types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deal_Source" EntityType="Self.Deal_Source" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deal_Status" EntityType="Self.Deal_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Developers" EntityType="Self.Developers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales_Person" EntityType="Self.Sales_Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales_Person_Slab" EntityType="Self.Sales_Person_Slab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Units_Details" EntityType="Self.Units_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Units_Payments" EntityType="Self.Units_Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Units_Status" EntityType="Self.Units_Status" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Comments_Comment_Types" Association="Self.FK_Comments_Comment_Types">
+            <End Role="Comment_Types" EntitySet="Comment_Types" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Person_Slab_Sales_Person" Association="Self.FK_Sales_Person_Slab_Sales_Person">
+            <End Role="Sales_Person" EntitySet="Sales_Person" />
+            <End Role="Sales_Person_Slab" EntitySet="Sales_Person_Slab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Person_Slab_Units_Details" Association="Self.FK_Sales_Person_Slab_Units_Details">
+            <End Role="Units_Details" EntitySet="Units_Details" />
+            <End Role="Sales_Person_Slab" EntitySet="Sales_Person_Slab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Details_Developers" Association="Self.FK_Units_Details_Developers">
+            <End Role="Developers" EntitySet="Developers" />
+            <End Role="Units_Details" EntitySet="Units_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Details_Sales_Person" Association="Self.FK_Units_Details_Sales_Person">
+            <End Role="Sales_Person" EntitySet="Sales_Person" />
+            <End Role="Units_Details" EntitySet="Units_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Payments_Units_Details" Association="Self.FK_Units_Payments_Units_Details">
+            <End Role="Units_Details" EntitySet="Units_Details" />
+            <End Role="Units_Payments" EntitySet="Units_Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Status_Deal_Source" Association="Self.FK_Units_Status_Deal_Source">
+            <End Role="Deal_Source" EntitySet="Deal_Source" />
+            <End Role="Units_Status" EntitySet="Units_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Status_Deal_Status" Association="Self.FK_Units_Status_Deal_Status">
+            <End Role="Deal_Status" EntitySet="Deal_Status" />
+            <End Role="Units_Status" EntitySet="Units_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Status_Units_Details" Association="Self.FK_Units_Status_Units_Details">
+            <End Role="Units_Details" EntitySet="Units_Details" />
+            <End Role="Units_Status" EntitySet="Units_Status" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comment_Types">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Comments" Relationship="POSModel.FK_Comments_Comment_Types" FromRole="Comment_Types" ToRole="Comment" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FK_Comment_TypeId" Type="Int32" Nullable="false" />
+          <Property Name="Comment_For_Id" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Comment_Types" Relationship="POSModel.FK_Comments_Comment_Types" FromRole="Comment" ToRole="Comment_Types" />
+        </EntityType>
+        <EntityType Name="Deal_Source">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Units_Status" Relationship="POSModel.FK_Units_Status_Deal_Source" FromRole="Deal_Source" ToRole="Units_Status" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Deal_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Units_Status" Relationship="POSModel.FK_Units_Status_Deal_Status" FromRole="Deal_Status" ToRole="Units_Status" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Units_Details" Relationship="POSModel.FK_Units_Details_Developers" FromRole="Developer" ToRole="Units_Details" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sales_Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Sales_Person_Slab" Relationship="POSModel.FK_Sales_Person_Slab_Sales_Person" FromRole="Sales_Person" ToRole="Sales_Person_Slab" />
+          <NavigationProperty Name="Units_Details" Relationship="POSModel.FK_Units_Details_Sales_Person" FromRole="Sales_Person" ToRole="Units_Details" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sales_Person_Slab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Sales_PersonId" Type="Int32" Nullable="false" />
+          <Property Name="FK_Units_DetailsId" Type="Int32" Nullable="false" />
+          <Property Name="Sales_Person_Slab1" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total_Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Sales_Person" Relationship="POSModel.FK_Sales_Person_Slab_Sales_Person" FromRole="Sales_Person_Slab" ToRole="Sales_Person" />
+          <NavigationProperty Name="Units_Details" Relationship="POSModel.FK_Sales_Person_Slab_Units_Details" FromRole="Sales_Person_Slab" ToRole="Units_Details" />
+        </EntityType>
+        <EntityType Name="Units_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FK_DeveloperId" Type="Int32" />
+          <Property Name="Unit_NO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unit_Volume" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FK_Sales_PersonId" Type="Int32" Nullable="false" />
+          <Property Name="Deal_Slab" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Commission_Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Commission_Deduction" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Total_Commission" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Developer" Relationship="POSModel.FK_Units_Details_Developers" FromRole="Units_Details" ToRole="Developer" />
+          <NavigationProperty Name="Sales_Person" Relationship="POSModel.FK_Units_Details_Sales_Person" FromRole="Units_Details" ToRole="Sales_Person" />
+          <NavigationProperty Name="Sales_Person_Slab" Relationship="POSModel.FK_Sales_Person_Slab_Units_Details" FromRole="Units_Details" ToRole="Sales_Person_Slab" />
+          <NavigationProperty Name="Units_Payments" Relationship="POSModel.FK_Units_Payments_Units_Details" FromRole="Units_Details" ToRole="Units_Payments" />
+          <NavigationProperty Name="Units_Status" Relationship="POSModel.FK_Units_Status_Units_Details" FromRole="Units_Details" ToRole="Units_Status" />
+        </EntityType>
+        <EntityType Name="Units_Payments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FK_Units_DetailsId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaymentAmountPercentage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CommissionDeduction" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SalesPersonCommision" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NetAmountDue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UncollectedPercentage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Units_Details" Relationship="POSModel.FK_Units_Payments_Units_Details" FromRole="Units_Payments" ToRole="Units_Details" />
+        </EntityType>
+        <EntityType Name="Units_Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Units_DetailsId" Type="Int32" Nullable="false" />
+          <Property Name="FK_Deal_StatusId" Type="Int32" Nullable="false" />
+          <Property Name="FK_Deal_SourceId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Deal_Source" Relationship="POSModel.FK_Units_Status_Deal_Source" FromRole="Units_Status" ToRole="Deal_Source" />
+          <NavigationProperty Name="Deal_Status" Relationship="POSModel.FK_Units_Status_Deal_Status" FromRole="Units_Status" ToRole="Deal_Status" />
+          <NavigationProperty Name="Units_Details" Relationship="POSModel.FK_Units_Status_Units_Details" FromRole="Units_Status" ToRole="Units_Details" />
+        </EntityType>
+        <EntityContainer Name="POSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comment_Types" EntityType="Self.Comment_Types" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Deal_Source" EntityType="Self.Deal_Source" />
+          <EntitySet Name="Deal_Status" EntityType="Self.Deal_Status" />
+          <EntitySet Name="Developers" EntityType="Self.Developer" />
+          <EntitySet Name="Sales_Person" EntityType="Self.Sales_Person" />
+          <EntitySet Name="Sales_Person_Slab" EntityType="Self.Sales_Person_Slab" />
+          <EntitySet Name="Units_Details" EntityType="Self.Units_Details" />
+          <EntitySet Name="Units_Payments" EntityType="Self.Units_Payments" />
+          <EntitySet Name="Units_Status" EntityType="Self.Units_Status" />
+          <AssociationSet Name="FK_Comments_Comment_Types" Association="POSModel.FK_Comments_Comment_Types">
+            <End Role="Comment_Types" EntitySet="Comment_Types" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Status_Deal_Source" Association="POSModel.FK_Units_Status_Deal_Source">
+            <End Role="Deal_Source" EntitySet="Deal_Source" />
+            <End Role="Units_Status" EntitySet="Units_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Status_Deal_Status" Association="POSModel.FK_Units_Status_Deal_Status">
+            <End Role="Deal_Status" EntitySet="Deal_Status" />
+            <End Role="Units_Status" EntitySet="Units_Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Details_Developers" Association="POSModel.FK_Units_Details_Developers">
+            <End Role="Developer" EntitySet="Developers" />
+            <End Role="Units_Details" EntitySet="Units_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Person_Slab_Sales_Person" Association="POSModel.FK_Sales_Person_Slab_Sales_Person">
+            <End Role="Sales_Person" EntitySet="Sales_Person" />
+            <End Role="Sales_Person_Slab" EntitySet="Sales_Person_Slab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Details_Sales_Person" Association="POSModel.FK_Units_Details_Sales_Person">
+            <End Role="Sales_Person" EntitySet="Sales_Person" />
+            <End Role="Units_Details" EntitySet="Units_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Person_Slab_Units_Details" Association="POSModel.FK_Sales_Person_Slab_Units_Details">
+            <End Role="Units_Details" EntitySet="Units_Details" />
+            <End Role="Sales_Person_Slab" EntitySet="Sales_Person_Slab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Payments_Units_Details" Association="POSModel.FK_Units_Payments_Units_Details">
+            <End Role="Units_Details" EntitySet="Units_Details" />
+            <End Role="Units_Payments" EntitySet="Units_Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Units_Status_Units_Details" Association="POSModel.FK_Units_Status_Units_Details">
+            <End Role="Units_Details" EntitySet="Units_Details" />
+            <End Role="Units_Status" EntitySet="Units_Status" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Comments_Comment_Types">
+          <End Type="POSModel.Comment_Types" Role="Comment_Types" Multiplicity="1" />
+          <End Type="POSModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment_Types">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="FK_Comment_TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Status_Deal_Source">
+          <End Type="POSModel.Deal_Source" Role="Deal_Source" Multiplicity="1" />
+          <End Type="POSModel.Units_Status" Role="Units_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deal_Source">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Status">
+              <PropertyRef Name="FK_Deal_SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Status_Deal_Status">
+          <End Type="POSModel.Deal_Status" Role="Deal_Status" Multiplicity="1" />
+          <End Type="POSModel.Units_Status" Role="Units_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deal_Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Status">
+              <PropertyRef Name="FK_Deal_StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Details_Developers">
+          <End Type="POSModel.Developer" Role="Developer" Multiplicity="0..1" />
+          <End Type="POSModel.Units_Details" Role="Units_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Details">
+              <PropertyRef Name="FK_DeveloperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Person_Slab_Sales_Person">
+          <End Type="POSModel.Sales_Person" Role="Sales_Person" Multiplicity="1" />
+          <End Type="POSModel.Sales_Person_Slab" Role="Sales_Person_Slab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales_Person_Slab">
+              <PropertyRef Name="FK_Sales_PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Details_Sales_Person">
+          <End Type="POSModel.Sales_Person" Role="Sales_Person" Multiplicity="1" />
+          <End Type="POSModel.Units_Details" Role="Units_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales_Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Details">
+              <PropertyRef Name="FK_Sales_PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Person_Slab_Units_Details">
+          <End Type="POSModel.Units_Details" Role="Units_Details" Multiplicity="1" />
+          <End Type="POSModel.Sales_Person_Slab" Role="Sales_Person_Slab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales_Person_Slab">
+              <PropertyRef Name="FK_Units_DetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Payments_Units_Details">
+          <End Type="POSModel.Units_Details" Role="Units_Details" Multiplicity="1" />
+          <End Type="POSModel.Units_Payments" Role="Units_Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Payments">
+              <PropertyRef Name="FK_Units_DetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Units_Status_Units_Details">
+          <End Type="POSModel.Units_Details" Role="Units_Details" Multiplicity="1" />
+          <End Type="POSModel.Units_Status" Role="Units_Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Units_Details">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Units_Status">
+              <PropertyRef Name="FK_Units_DetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POSModelStoreContainer" CdmEntityContainer="POSEntities">
+          <EntitySetMapping Name="Comment_Types">
+            <EntityTypeMapping TypeName="POSModel.Comment_Types">
+              <MappingFragment StoreEntitySet="Comment_Types">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="POSModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Comment1" ColumnName="Comment" />
+                <ScalarProperty Name="FK_Comment_TypeId" ColumnName="FK_Comment_TypeId" />
+                <ScalarProperty Name="Comment_For_Id" ColumnName="Comment_For_Id" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deal_Source">
+            <EntityTypeMapping TypeName="POSModel.Deal_Source">
+              <MappingFragment StoreEntitySet="Deal_Source">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deal_Status">
+            <EntityTypeMapping TypeName="POSModel.Deal_Status">
+              <MappingFragment StoreEntitySet="Deal_Status">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developers">
+            <EntityTypeMapping TypeName="POSModel.Developer">
+              <MappingFragment StoreEntitySet="Developers">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales_Person">
+            <EntityTypeMapping TypeName="POSModel.Sales_Person">
+              <MappingFragment StoreEntitySet="Sales_Person">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales_Person_Slab">
+            <EntityTypeMapping TypeName="POSModel.Sales_Person_Slab">
+              <MappingFragment StoreEntitySet="Sales_Person_Slab">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FK_Sales_PersonId" ColumnName="FK_Sales_PersonId" />
+                <ScalarProperty Name="FK_Units_DetailsId" ColumnName="FK_Units_DetailsId" />
+                <ScalarProperty Name="Sales_Person_Slab1" ColumnName="Sales_Person_Slab" />
+                <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units_Details">
+            <EntityTypeMapping TypeName="POSModel.Units_Details">
+              <MappingFragment StoreEntitySet="Units_Details">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="FK_DeveloperId" ColumnName="FK_DeveloperId" />
+                <ScalarProperty Name="Unit_NO" ColumnName="Unit_NO" />
+                <ScalarProperty Name="Unit_Volume" ColumnName="Unit_Volume" />
+                <ScalarProperty Name="FK_Sales_PersonId" ColumnName="FK_Sales_PersonId" />
+                <ScalarProperty Name="Deal_Slab" ColumnName="Deal_Slab" />
+                <ScalarProperty Name="Commission_Amount" ColumnName="Commission_Amount" />
+                <ScalarProperty Name="Commission_Deduction" ColumnName="Commission_Deduction" />
+                <ScalarProperty Name="Total_Commission" ColumnName="Total_Commission" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units_Payments">
+            <EntityTypeMapping TypeName="POSModel.Units_Payments">
+              <MappingFragment StoreEntitySet="Units_Payments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FK_Units_DetailsId" ColumnName="FK_Units_DetailsId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentAmountPercentage" ColumnName="PaymentAmountPercentage" />
+                <ScalarProperty Name="CommissionDeduction" ColumnName="CommissionDeduction" />
+                <ScalarProperty Name="SalesPersonCommision" ColumnName="SalesPersonCommision" />
+                <ScalarProperty Name="NetAmountDue" ColumnName="NetAmountDue" />
+                <ScalarProperty Name="UncollectedPercentage" ColumnName="UncollectedPercentage" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units_Status">
+            <EntityTypeMapping TypeName="POSModel.Units_Status">
+              <MappingFragment StoreEntitySet="Units_Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FK_Units_DetailsId" ColumnName="FK_Units_DetailsId" />
+                <ScalarProperty Name="FK_Deal_StatusId" ColumnName="FK_Deal_StatusId" />
+                <ScalarProperty Name="FK_Deal_SourceId" ColumnName="FK_Deal_SourceId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

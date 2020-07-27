@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3c309d99a3a4d12b7b4799cdab59e56" Name="Diagram1">
+        <EntityTypeShape EntityType="POSModel.Comment_Types" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Comment" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Deal_Source" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Deal_Status" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Developer" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Sales_Person" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Sales_Person_Slab" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Units_Details" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Units_Payments" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Units_Status" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="POSModel.FK_Comments_Comment_Types" />
+        <AssociationConnector Association="POSModel.FK_Units_Status_Deal_Source" />
+        <AssociationConnector Association="POSModel.FK_Units_Status_Deal_Status" />
+        <AssociationConnector Association="POSModel.FK_Units_Details_Developers" />
+        <AssociationConnector Association="POSModel.FK_Sales_Person_Slab_Sales_Person" />
+        <AssociationConnector Association="POSModel.FK_Units_Details_Sales_Person" />
+        <AssociationConnector Association="POSModel.FK_Sales_Person_Slab_Units_Details" />
+        <AssociationConnector Association="POSModel.FK_Units_Payments_Units_Details" />
+        <AssociationConnector Association="POSModel.FK_Units_Status_Units_Details" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
