@@ -15,14 +15,14 @@ namespace POS_Demo.DataModels.Common
         [Display(Name = "Created By")]
         public int CreatedBy { get; set; }
 
-        [Display(Name = "Created Data")]
+        [Display(Name = "Created")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public System.DateTime Created { get; set; }
 
         [Display(Name = "Modified By")]
         public int LastModifiedBy { get; set; }
 
-        [Display(Name = "Modified Data")]
+        [Display(Name = "Modified")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public System.DateTime LastModified { get; set; }
 
