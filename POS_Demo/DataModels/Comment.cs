@@ -9,20 +9,25 @@
 
 namespace POS_Demo.DataModels
 {
+    using POS_Demo.DataModels.Common;
     using System;
     using System.Collections.Generic;
-    
-    public partial class Comment
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Comment : AuditableEntity
     {
+        [Display(Name = "Comment Code")]
+        [DisplayFormat(DataFormatString = "{0:D5}", ApplyFormatInEditMode = true)]
         public int Id { get; set; }
+
+        [Display(Name = "Comment")]
         public string Comment1 { get; set; }
+
+        [Display(Name = "Comment Type")]
         public int FK_Comment_TypeId { get; set; }
+
+
         public int Comment_For_Id { get; set; }
-        public bool IsActive { get; set; }
-        public int CreatedBy { get; set; }
-        public System.DateTime Created { get; set; }
-        public int LastModifiedBy { get; set; }
-        public System.DateTime LastModified { get; set; }
     
         public virtual Comment_Types Comment_Types { get; set; }
     }

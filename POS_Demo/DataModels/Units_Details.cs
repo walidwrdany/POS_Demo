@@ -9,42 +9,62 @@
 
 namespace POS_Demo.DataModels
 {
+    using POS_Demo.DataModels.Common;
     using System;
     using System.Collections.Generic;
-    
-    public partial class Units_Details
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Units_Details : AuditableEntity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Units_Details()
         {
             this.Sales_Person_Slab = new HashSet<Sales_Person_Slab>();
             this.Units_Payments = new HashSet<Units_Payments>();
             this.Units_Status = new HashSet<Units_Status>();
         }
-    
+
+
+        [Display(Name = "Unit Code")]
+        [DisplayFormat(DataFormatString = "{0:D5}", ApplyFormatInEditMode = true)]
         public int Id { get; set; }
+
+        [Display(Name = "Sale Date")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime SaleDate { get; set; }
+
+        [Display(Name = "Developer")]
         public Nullable<int> FK_DeveloperId { get; set; }
+
+        [Display(Name = "Unit Number")]
         public string Unit_NO { get; set; }
+
+        [Display(Name = "Unit Volume")]
         public decimal Unit_Volume { get; set; }
+
+        [Display(Name = "Saleer")]
         public int FK_Sales_PersonId { get; set; }
+
+        [Display(Name = "Deal Slab")]
         public decimal Deal_Slab { get; set; }
+
+        [Display(Name = "Commission Amount")]
         public decimal Commission_Amount { get; set; }
+
+        [Display(Name = "Commission Deduction (if Any)")]
         public Nullable<decimal> Commission_Deduction { get; set; }
+
+        [Display(Name = "Total Commission")]
         public decimal Total_Commission { get; set; }
-        public bool IsActive { get; set; }
-        public int CreatedBy { get; set; }
-        public System.DateTime Created { get; set; }
-        public int LastModifiedBy { get; set; }
-        public System.DateTime LastModified { get; set; }
+
+       
     
         public virtual Developer Developer { get; set; }
         public virtual Sales_Person Sales_Person { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        
         public virtual ICollection<Sales_Person_Slab> Sales_Person_Slab { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        
         public virtual ICollection<Units_Payments> Units_Payments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        
         public virtual ICollection<Units_Status> Units_Status { get; set; }
     }
 }
