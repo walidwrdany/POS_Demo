@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="~/Content/">
+    <meta charset="utf-8" />
+    <title>POS | @ViewBag.Title</title>
+    <meta name="description" content="Login page example">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+    <link href="assets/css/pages/login/login-3.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/skins/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/skins/aside/dark.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="assets/media/logos/logo-4-sm.png" />
+</head>
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+    <div class="kt-grid kt-grid--ver kt-grid--root">
+        <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v3 kt-login--signin" id="kt_login">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" style="background-image: url(assets/media/bg/bg-3.jpg);">
+                <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
+                    <div class="kt-login__container">
+                        <div class="kt-login__logo">
+                            <img src="assets/media/logos/logo-8-inverse.png" />
+                        </div>
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/app/KTAppOptions.js"></script>
+    <script src="assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
+    <script src="assets/js/scripts.bundle.js" type="text/javascript"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

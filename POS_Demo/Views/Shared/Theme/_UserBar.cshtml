@@ -1,0 +1,100 @@
+﻿
+@using Microsoft.AspNet.Identity.Owin;
+@using Microsoft.AspNet.Identity;
+@{
+    if (Request.IsAuthenticated)
+    {
+        var manager = new ApplicationUserManager(new UserStore(System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()));
+
+        ApplicationUser user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId<int>());
+
+        var first = user.FirstName.Substring(0, 1).ToUpper() + user.LastName.Substring(0, 1).ToUpper();
+        var fullName = user.FirstName + " " + user.LastName;
+        using (Html.BeginForm("LogOff", "Account", new { Area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+        }
+
+
+        <div class="kt-header__topbar-item kt-header__topbar-item--user">
+            <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
+                <div class="kt-header__topbar-user">
+                    <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
+                    <span class="kt-header__topbar-username kt-hidden-mobile">@fullName</span>
+                    @if (!string.IsNullOrEmpty(user.UserImage))
+                    {
+                        <img alt="Pic" src="/@Url.Content(user.UserImage)" />
+                    }
+                    else
+                    {
+                        <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                        <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">@first</span>
+                    }
+                </div>
+            </div>
+            <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+                <!--begin: Head -->
+                <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(assets/media/misc/bg-1.jpg)">
+                    <div class="kt-user-card__avatar">
+                        @if (!string.IsNullOrEmpty(user.UserImage))
+                        {
+                            <img alt="Pic" src="/@Url.Content(user.UserImage)" style="width: 100px !important; height: 100px !important;" />
+                        }
+                        else
+                        {
+                            <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">@first</span>
+                        }
+                    </div>
+                    <div class="kt-user-card__name">
+                        @fullName
+                        @if (User.IsInRole(RoleValues.Admin) || User.IsInRole(RoleValues.SuperAdmin))
+                        {
+                            <i class="flaticon2-correct kt-font-success"></i>
+                        }
+                        <div class="row col-md-12">
+                            <span class="kt-widget__desc">@manager.GetRoles(user.Id).FirstOrDefault()</span>
+                        </div>
+                    </div>
+
+                    <div class="kt-user-card__badge kt-hidden">
+                        <span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
+                    </div>
+                </div>
+                <!--end: Head -->
+                <!--begin: Navigation -->
+                <div class="kt-notification">
+                    <a href="@Url.Action("Details", "Users", new { Area = "", id = user.Id })" class="kt-notification__item">
+                        <div class="kt-notification__item-icon">
+                            <i class="flaticon2-calendar-3 kt-font-success"></i>
+                        </div>
+                        <div class="kt-notification__item-details">
+                            <div class="kt-notification__item-title kt-font-bold">
+                                My Profile
+                            </div>
+                            <div class="kt-notification__item-time">
+                                Account settings
+                            </div>
+                        </div>
+                    </a>
+                    <a href="@Url.Action("ChangePassword", "Manage", new { Area = "" })" class="kt-notification__item">
+                        <div class="kt-notification__item-icon">
+                            <i class="flaticon-security kt-font-warning"></i>
+                        </div>
+                        <div class="kt-notification__item-details">
+                            <div class="kt-notification__item-title kt-font-bold">
+                                Change My Password
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="kt-notification__custom kt-space-between">
+                        <a href="javascript:;" onclick="javascript:document.getElementById('logoutForm').submit()" class="btn btn-label btn-label-brand btn-widest btn-sm btn-bold" style="width: 100%">Sign Out</a>
+                    </div>
+                </div>
+                <!--end: Navigation -->
+            </div>
+        </div>
+    }
+}
+
