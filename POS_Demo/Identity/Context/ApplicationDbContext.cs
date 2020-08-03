@@ -1,4 +1,8 @@
-﻿using System.Data.Entity.Infrastructure;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace POS_Demo
@@ -9,6 +13,7 @@ namespace POS_Demo
         public ApplicationDbContext()
             : this("DefaultConnection")
         {
+            
             this.Database.CreateIfNotExists();
         }
 
@@ -24,9 +29,11 @@ namespace POS_Demo
 
         
 
-        public DbQuery<TEntity> Query<TEntity>() where TEntity : class
+        public ICollection<TEntity> Query<TEntity>(Expression<Func<TEntity, bool>> predicate = null) where TEntity : class
         {
-            return Set<TEntity>().AsNoTracking();
+            if (predicate != null)
+                return Set<TEntity>().AsNoTracking().Where(predicate).ToList();
+            return Set<TEntity>().AsNoTracking().ToList();
         }
     }
 }

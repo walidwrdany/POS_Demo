@@ -6,7 +6,7 @@ namespace POS_Demo.Helper
     {
         public static string CreateIfNotExist(string _path)
         {
-            string filePath = System.Web.HttpContext.Current.Server.MapPath(_path);
+            string filePath = System.Web.Hosting.HostingEnvironment.MapPath(_path);
             FileInfo file = new FileInfo(filePath);
             if (!file.Exists)
                 file.Directory.Create();

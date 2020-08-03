@@ -78,40 +78,37 @@
                                 @RenderSection("ActionLink", false)
                             </div>
 
-                            <div class="kt-subheader__toolbar">
-                                <div class="kt-subheader__wrapper">
-                                    @RenderSection("Toolbar", false)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end:: Content Head -->
-                    <!-- begin:: Content -->
-                    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-                        @RenderBody()
-                    </div>
-                    <!-- end:: Content -->
-                </div>
-
-                <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
-                    <div class="kt-container  kt-container--fluid ">
-                        <div class="kt-footer__copyright">
-                            @System.DateTime.Now.Year
-                            &nbsp;&copy;&nbsp;
-                            <a href="https://goxclusives.com/" target="_blank" class="kt-link">Xclusives</a>
-                        </div>
-                        <div class="kt-footer__menu kt-hidden">
-                            <a href="#" target="_blank" class="kt-footer__menu-link kt-link">About</a>
-                            <a href="#" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
-                            <a href="#" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
-                        </div>
-                    </div>
-                </div>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Unit", "Index", "Unit")</li>
+                    <li>@Html.ActionLink("Sales", "Index", "Sales")</li>
+                    <li>@Html.ActionLink("Developer", "Index", "Developer")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div id="kt_scrolltop" class="kt-scrolltop">
-        <i class="fa fa-arrow-up"></i>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
     </div>
     <!-- begin::Global Config(global config for global JS sciprts) -->
     <script src="~/Scripts/app/KTAppOptions.js"></script>

@@ -182,6 +182,7 @@
     <Compile Include="DataModels\Comment_Types.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\Common\AuditableEntity.cs" />
     <Compile Include="DataModels\Deal_Source.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

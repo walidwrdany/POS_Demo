@@ -9,10 +9,11 @@
 
 namespace POS_Demo.DataModels
 {
+    using POS_Demo.DataModels.Common;
     using System;
     using System.Collections.Generic;
     
-    public partial class Units_Payments
+    public partial class Units_Payments : AuditableEntity
     {
         public int Id { get; set; }
         public int FK_Units_DetailsId { get; set; }
@@ -23,11 +24,6 @@ namespace POS_Demo.DataModels
         public decimal SalesPersonCommision { get; set; }
         public decimal NetAmountDue { get; set; }
         public decimal UncollectedPercentage { get; set; }
-        public bool IsActive { get; set; }
-        public int CreatedBy { get; set; }
-        public System.DateTime Created { get; set; }
-        public int LastModifiedBy { get; set; }
-        public System.DateTime LastModified { get; set; }
     
         public virtual Units_Details Units_Details { get; set; }
     }
