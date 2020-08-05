@@ -4,127 +4,107 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<!--begin::Portlet-->
+<div class="kt-portlet kt-portlet--mobile">
+    <div class="kt-portlet__head kt-portlet__head--lg">
+        <div class="kt-portlet__head-label">
+            <span class="kt-portlet__head-icon">
+                <i class="flaticon2-soft-icons"></i>
+            </span>
+            <h3 class="kt-portlet__head-title">@ViewBag.Title</h3>
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__body container">
+                <!--begin::body-->
+                <!-------------------------------------------------------->
 
-<div>
-    <h4>Units_Details</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SaleDate)
-        </dt>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SaleDate)
+                            <div class="input-group date">
+                                @Html.EditorFor(model => model.SaleDate, new { htmlAttributes = new { @class = "form-control datepicker" } }).IsDisabled(true)
+                                <div class="input-group-append"><span class="input-group-text"><i class="fa fa-calendar-alt"></i></span></div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.SaleDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FK_DeveloperId)
+                            @Html.DropDownList("FK_DeveloperId", null, "Select Developer", htmlAttributes: new { @class = "form-control select2" }).IsDisabled(true)
+                            @Html.ValidationMessageFor(model => model.FK_DeveloperId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SaleDate)
-        </dd>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Unit_NO)
+                            @Html.EditorFor(model => model.Unit_NO, new { htmlAttributes = new { @class = "form-control" } }).IsDisabled(true)
+                            @Html.ValidationMessageFor(model => model.Unit_NO, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FK_Sales_PersonId)
+                            @Html.DropDownList("FK_Sales_PersonId", null, "Select Salesperson", htmlAttributes: new { @class = "form-control select2" }).IsDisabled(true)
+                            @Html.ValidationMessageFor(model => model.FK_Sales_PersonId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Unit_NO)
-        </dt>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Unit_Volume)
+                            @Html.EditorFor(model => model.Unit_Volume, new { htmlAttributes = new { @class = "form-control inputmask" } }).IsDisabled(true)
+                            @Html.ValidationMessageFor(model => model.Unit_Volume, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Deal_Slab)
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.Deal_Slab, new { htmlAttributes = new { @class = "form-control inputmask" } }).IsDisabled(true)
+                                <div class="input-group-append"><span class="input-group-text"><i class="fa fa-percent"></i></span></div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Deal_Slab, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Unit_NO)
-        </dd>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Commission_Amount)
+                            @Html.EditorFor(model => model.Commission_Amount, new { htmlAttributes = new { @class = "form-control" } }).IsDisabled(true)
+                            @Html.ValidationMessageFor(model => model.Commission_Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Commission_Deduction)
+                            @Html.EditorFor(model => model.Commission_Deduction, new { htmlAttributes = new { @class = "form-control inputmask" } }).IsDisabled(true)
+                            @Html.ValidationMessageFor(model => model.Commission_Deduction, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Total_Commission)
+                            @Html.EditorFor(model => model.Total_Commission, new { htmlAttributes = new { @class = "form-control" } }).IsDisabled(true)
+                            @Html.ValidationMessageFor(model => model.Total_Commission, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Unit_Volume)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Unit_Volume)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Deal_Slab)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deal_Slab)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Commission_Amount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Commission_Amount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Commission_Deduction)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Commission_Deduction)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Total_Commission)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Total_Commission)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModifiedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModified)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModified)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Developer.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Developer.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sales_Person.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sales_Person.Name)
-        </dd>
-
-    </dl>
+                <!-------------------------------------------------------->
+                <!--end::body-->
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!--end::Portlet-->

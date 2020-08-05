@@ -1,0 +1,12 @@
+﻿@model Nullable<int>
+<div class="dropdown">
+    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown"><i class="flaticon-more"></i></a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <ul class="kt-nav">
+            <li class="kt-nav__item"><a href="@Url.Action("Details", null, new { id = Model })" class="kt-nav__link" target="_blank"><i class="kt-nav__link-icon flaticon2-expand"></i><span class="kt-nav__link-text">View</span></a></li>
+            <li class="kt-nav__item"><a href="@Url.Action("Edit", null, new { id = Model })" class="kt-nav__link" target="_blank"><i class="kt-nav__link-icon flaticon2-contract"></i><span class="kt-nav__link-text">Edit</span></a></li>
+            <li class="kt-nav__item"><a href="@Url.Action("Delete", null, new { id = Model })" class="kt-nav__link" target="_blank"><i class="kt-nav__link-icon flaticon2-trash"></i><span class="kt-nav__link-text">Delete</span></a></li>
+            @*<li class="kt-nav__item"><a href="@Url.Action("Active", null, new { id = Model })" class="kt-nav__link"><i class="kt-nav__link-icon flaticon2-reload"></i><span class="kt-nav__link-text">Active</span></a></li>*@
+        </ul>
+    </div>
+</div>

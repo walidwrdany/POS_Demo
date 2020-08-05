@@ -9,24 +9,22 @@
 
 namespace POS_Demo.DataModels
 {
-    using POS_Demo.DataModels.Common;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class POSEntities : DbContext
     {
         public POSEntities()
             : base("name=POSEntities")
         {
-            this.Database.Log = Debug.Log;
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Comment_Types> Comment_Types { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Deal_Source> Deal_Source { get; set; }
@@ -37,12 +35,5 @@ namespace POS_Demo.DataModels
         public virtual DbSet<Units_Details> Units_Details { get; set; }
         public virtual DbSet<Units_Payments> Units_Payments { get; set; }
         public virtual DbSet<Units_Status> Units_Status { get; set; }
-
-
-        public override int SaveChanges()
-        {
-            //this.Database.Log = Debug.Log;
-            return base.SaveChanges();
-        }
     }
 }

@@ -9,30 +9,22 @@
 
 namespace POS_Demo.DataModels
 {
-    using POS_Demo.DataModels.Common;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Deal_Status : AuditableEntity
+    
+    public partial class Deal_Status : Common.AuditableEntity
     {
-        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Deal_Status()
         {
             this.Units_Status = new HashSet<Units_Status>();
         }
-
-        [Display(Name = "Status Code")]
-        [DisplayFormat(DataFormatString = "{0:D5}", ApplyFormatInEditMode = true)]
+    
         public int Id { get; set; }
-
-        [Display(Name = "Status Name")]
         public string Name { get; set; }
-
-        [Display(Name = "Description")]
         public string Description { get; set; }
-
-        
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Units_Status> Units_Status { get; set; }
     }
 }

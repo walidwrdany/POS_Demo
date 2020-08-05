@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23007c7233c04280b69ca6ec92916d15" Name="Diagram1">
+        <EntityTypeShape EntityType="POSModel.Comment_Types" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Comment" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Deal_Source" Width="1.5" PointX="9" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Deal_Status" Width="1.5" PointX="9" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Developer" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Sales_Person" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Sales_Person_Slab" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Units_Details" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Units_Payments" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.Units_Status" Width="1.5" PointX="11.25" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="POSModel.FK_Comments_Comment_Types" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Units_Status_Deal_Source" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Units_Status_Deal_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Units_Details_Developers" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Sales_Person_Slab_Sales_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Units_Details_Sales_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Sales_Person_Slab_Units_Details" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Units_Payments_Units_Details" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_Units_Status_Units_Details" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -12,15 +12,21 @@ if (KTUtil.isRTL()) {
 }
 
 $('select.select2').select2();
-$('.inputmask_3').inputmask('9{0,3}');
-$('.inputmask_11').inputmask({ "mask": "9{10,11}", 'autoUnmask': true, 'removeMaskOnSubmit': true, 'greedy': false });
-$('.inputmask_GO_11').inputmask({ "mask": "99999999999", 'autoUnmask': true, 'removeMaskOnSubmit': true, 'greedy': false });
+$('.inputmask').inputmask('decimal', {
+    greedy: false,
+    definitions: {
+        '*': {
+            validator: "[0-9]"
+        }
+    },
+    rightAlign: false
+});
 
 $('input.datepicker').datepicker({
     rtl: KTUtil.isRTL(),
     todayHighlight: true,
     autoclose: true,
-    format: 'dd-MM-yyyy',
+    format: 'dd-mm-yyyy',
     orientation: "bottom left",
     templates: arrows
 });
@@ -46,20 +52,20 @@ jQuery(document).ready(function () {
 
 
 
-    $('input, select, textarea').each(function () {
-        //to add placeholder for all input that not have placeholder from label
-        var $InputEl = $(this);
-        var placeholder = $InputEl.attr('placeholder');
-        var required = $InputEl.attr('data-val-required');
-        var disabled = $InputEl.attr('disabled');
-        if ((typeof placeholder === typeof undefined || placeholder === false) && (typeof disabled === typeof undefined || disabled === false)) {
-            $InputEl.attr('placeholder', $($InputEl.parents('div.form-group').find('label[for="' + $InputEl.attr('id') + '"]')).text());
-        }
+    //$('input, select, textarea').each(function () {
+    //    //to add placeholder for all input that not have placeholder from label
+    //    var $InputEl = $(this);
+    //    var placeholder = $InputEl.attr('placeholder');
+    //    var required = $InputEl.attr('data-val-required');
+    //    var disabled = $InputEl.attr('disabled');
+    //    if ((typeof placeholder === typeof undefined || placeholder === false) && (typeof disabled === typeof undefined || disabled === false)) {
+    //        $InputEl.attr('placeholder', $($InputEl.parents('div.form-group').find('label[for="' + $InputEl.attr('id') + '"]')).text());
+    //    }
 
-        //if (!(typeof required === typeof undefined || required === false)) {
-        //    alert($InputEl.attr('id'));
-        //}
-    });
+    //    //if (!(typeof required === typeof undefined || required === false)) {
+    //    //    alert($InputEl.attr('id'));
+    //    //}
+    //});
 
 });
 

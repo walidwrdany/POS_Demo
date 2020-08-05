@@ -9,16 +9,15 @@
 
 namespace POS_Demo.DataModels
 {
-    using POS_Demo.DataModels.Common;
     using System;
     using System.Collections.Generic;
     
-    public partial class Units_Status : AuditableEntity
+    public partial class Units_Status : Common.AuditableEntity
     {
         public int Id { get; set; }
         public int FK_Units_DetailsId { get; set; }
         public int FK_Deal_StatusId { get; set; }
-        public int FK_Deal_SourceId { get; set; }
+        public Nullable<int> FK_Deal_SourceId { get; set; }
     
         public virtual Deal_Source Deal_Source { get; set; }
         public virtual Deal_Status Deal_Status { get; set; }

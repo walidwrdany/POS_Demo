@@ -9,21 +9,20 @@
 
 namespace POS_Demo.DataModels
 {
-    using POS_Demo.DataModels.Common;
     using System;
     using System.Collections.Generic;
     
-    public partial class Units_Payments : AuditableEntity
+    public partial class Units_Payments : Common.AuditableEntity
     {
         public int Id { get; set; }
         public int FK_Units_DetailsId { get; set; }
         public System.DateTime PaymentDate { get; set; }
-        public decimal PaymentAmount { get; set; }
-        public decimal PaymentAmountPercentage { get; set; }
-        public decimal CommissionDeduction { get; set; }
-        public decimal SalesPersonCommision { get; set; }
-        public decimal NetAmountDue { get; set; }
-        public decimal UncollectedPercentage { get; set; }
+        public int PaymentAmount { get; set; }
+        public int PaymentAmountPercentage { get; set; }
+        public int CommissionDeduction { get; set; }
+        public int SalesPersonCommision { get; set; }
+        public int NetAmountDue { get; set; }
+        public int UncollectedPercentage { get; set; }
     
         public virtual Units_Details Units_Details { get; set; }
     }

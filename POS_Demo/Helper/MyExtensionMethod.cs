@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -10,6 +11,10 @@ namespace POS_Demo.Helper
 {
     public static class MyExtensionMethod
     {
+        public static string asSomeLocalCurrency(this int money, CultureInfo cInfo)
+        {
+            return (money / 100m).ToString("c", cInfo); // e.g. 12345 with InvariantCulture is ¤123.45
+        }
 
         public static string ToYesNo(this bool b)
         {

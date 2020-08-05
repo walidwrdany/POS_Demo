@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using POS_Demo.DataModels;
+using POS_Demo.Helper.Enums;
 
 namespace POS_Demo.Controllers
 {
@@ -31,6 +32,8 @@ namespace POS_Demo.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.FK_DeveloperId = new SelectList(_db.Developers, "Id", "Name", units_Details.FK_DeveloperId);
+            ViewBag.FK_Sales_PersonId = new SelectList(_db.Sales_Person, "Id", "Name", units_Details.FK_Sales_PersonId);
             return View(units_Details);
         }
 
@@ -38,7 +41,8 @@ namespace POS_Demo.Controllers
         {
             ViewBag.FK_DeveloperId = new SelectList(_db.Developers, "Id", "Name");
             ViewBag.FK_Sales_PersonId = new SelectList(_db.Sales_Person, "Id", "Name");
-            return View(new Units_Details() {
+            return View(new Units_Details()
+            {
                 SaleDate = this.GetDate
             });
         }
@@ -57,7 +61,22 @@ namespace POS_Demo.Controllers
             {
                 _db.Units_Details.Add(units_Details);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var units_Status = new Units_Status()
+                {
+                    FK_Units_DetailsId = units_Details.Id,
+                    FK_Deal_StatusId = (int)Status.Not_Collected,
+                    IsActive = true,
+                    Created = GetDate,
+                    CreatedBy = GetUserId,
+                    LastModified = GetDate,
+                    LastModifiedBy = GetUserId
+                };
+
+                _db.Units_Status.Add(units_Status);
+                _db.SaveChanges();
+
+                return RedirectToAction("Details", new { id = units_Details.Id });
             }
 
             ViewBag.FK_DeveloperId = new SelectList(_db.Developers, "Id", "Name", units_Details.FK_DeveloperId);
