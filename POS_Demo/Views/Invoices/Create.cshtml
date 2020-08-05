@@ -128,19 +128,19 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function () {
-            var Unit_Volume = $('#Unit_Volume'),
-                Deal_Slab = $('#Deal_Slab'),
-                Commission_Amount = $('#Commission_Amount'),
-                Commission_Deduction = $('#Commission_Deduction'),
-                Total_Commission = $('#Total_Commission');
 
+        var Unit_Volume = $('#Unit_Volume'),
+            Deal_Slab = $('#Deal_Slab'),
+            Commission_Amount = $('#Commission_Amount'),
+            Commission_Deduction = $('#Commission_Deduction'),
+            Total_Commission = $('#Total_Commission');
+
+        this.resetInputs();
+
+        $(document).ready(function () {
             Unit_Volume.on('change', function () {
                 if (Unit_Volume.val() == '') {
-                    Deal_Slab.val('').trigger('change');
-                    Commission_Amount.val('').trigger('change');
-                    Commission_Deduction.val('').trigger('change');
-                    Total_Commission.val('').trigger('change');
+                    this.resetInputs();
                     return false;
                 }
 
@@ -159,5 +159,14 @@
             });
 
         });
+
+        function resetInputs() {
+            Unit_Volume.val('').trigger('change');
+            Deal_Slab.val('').trigger('change');
+            Commission_Amount.val('').trigger('change');
+            Commission_Deduction.val('').trigger('change');
+            Total_Commission.val('').trigger('change');
+        }
+
     </script>
 }
